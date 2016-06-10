@@ -25,7 +25,7 @@
   networking.firewall.allowedTCPPorts = [ 443 80 ];
 
   nix = {
-    maxJobs = 0;
+    maxJobs = 1;
     distributedBuilds = true;
     buildMachines = [
       { hostName = "slave1"; maxJobs = 4; speedFactor = 2; sshKey = "/etc/nix/id_buildfarm"; sshUser = "root"; system = "x86_64-linux"; }
@@ -141,6 +141,7 @@
     minimumDiskFree = 5;  # in GB
     minimumDiskFreeEvaluator = 2;
     notificationSender = "hydra@yourserver.com";
+    buildMachinesFiles = [ "/etc/nix/machines" ];
     logo = null;
     debugServer = false;
   };
